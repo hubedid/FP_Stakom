@@ -10,7 +10,7 @@ class Login extends BaseController
 		if(!$this->session->get('logged_in')){
 			return view('auth/login');
 		}else{
-			return redirect()->to('/');
+			return redirect()->to('/admin');
 		}
 		
 		// echo "tes";

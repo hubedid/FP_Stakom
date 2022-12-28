@@ -1,10 +1,15 @@
 <br />
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Data Latih</h3>
+        <h3 class="card-title">Data Uji</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
     </div>
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="tbl_uji" class="table table-bordered table-striped">
             <thead>
                 <tr>
                 <th>No.</th>
@@ -23,8 +28,6 @@
             <tbody>
             <?php 
             $i = 0;
-            $benar = 0;
-            $salah = 0;
             foreach ($data_uji as $latih) { $i++;?>
                 <tr>
                     <td><?= $i; ?></td>
@@ -48,7 +51,6 @@
                     ?>
                     <td><?= ($prob_layak > $prob_nolayak) ? "Layak" : "Tidak Layak" ?></td>
                     <td><?= ((($prob_layak > $prob_nolayak) ? "Layak" : "Tidak Layak") == $latih->kelayakan) ? "Benar" : "Salah" ?></td>
-                    <?php ((((($prob_layak > $prob_nolayak) ? "Layak" : "Tidak Layak") == $latih->kelayakan) ? "Benar" : "Salah") == "Benar") ? $benar++ : $salah++; ?>
                 </tr>
             <?php } ?>
             </tbody>
@@ -71,23 +73,13 @@
     </div>
 </div>
 <!-- <div class="card"> -->
-    <h1>Akurasi : <?= round((($benar/($benar + $salah)) * 100), 2) . '%';?> </h1>
 <!-- </div> -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     $(function () {
-        $("#example1").DataTable({
+        $("#tbl_uji").DataTable({
         "responsive": true, "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        });
+        }).buttons().container().appendTo('#tbl_uji_wrapper .col-md-6:eq(0)');
     });
 </script>

@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <img src="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="/home/assets/img/logoupnbaru.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">UAS STAKOM</span>
     </a>
 
@@ -23,10 +23,10 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/" <?php 
+                    <a href="/admin" <?php 
                     $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";  
                     $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; 
-                    if(base_url().'/' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    if(base_url().'/admin' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         
@@ -35,22 +35,12 @@
                         </p>
                     </a>
                 </li>
+                
                 <li class="nav-item">
-                    <a href="/report" <?php 
-                    if(base_url().'/report' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    <a href="/admin/data-latih" <?php 
+                    if(base_url().'/admin/data-latih' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
-                        <i class="nav-icon fas fa-chart-bar"></i>
-                        
-                        <p>
-                            Report
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/data-latih" <?php 
-                    if(base_url().'/data-latih' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
-                    ?>>
-                        <i class="nav-icon fas fa-map"></i>
+                        <i class="nav-icon fas fa-chart-line"></i>
                         
                         <p>
                             Data Latih
@@ -58,8 +48,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/data-uji" <?php 
-                    if(base_url().'/data-uji' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    <a href="/admin/data-uji" <?php 
+                    if(base_url().'/admin/data-uji' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
                         <i class="nav-icon fas fa-map"></i>
                         
@@ -69,10 +59,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/perhitungan-data-latih" <?php 
-                    if(base_url().'/perhitungan-data-latih' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    <a href="/admin/perhitungan-data-latih" <?php 
+                    if(base_url().'/admin/perhitungan-data-latih' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
-                        <i class="nav-icon fas fa-map"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         
                         <p>
                             Perhitungan Data Latih
@@ -80,8 +70,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/logout" <?php 
-                    if(base_url().'/logout' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    <a href="/admin/logout" <?php 
+                    if(base_url().'/admin/logout' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?> onclick="return confirm('Are you sure?')">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         

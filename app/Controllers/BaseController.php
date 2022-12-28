@@ -161,4 +161,41 @@ class BaseController extends Controller
 		// echo json_encode($data);
 		return $data;
 	}
+
+	public function get_data_akurasi(){
+		$data_uji = $this->DashboardModel->get_data_uji();
+		$total = 0;
+		$data = array();
+		$salah = 0;
+		$benar = 0;
+		$data_count_layak = $this->get_count_layak();
+		$data_count_nolayak = $this->get_count_nolayak();
+		$data_perhitungan = $this->get_data_perhitungan();
+		$data_count_total = $this->get_count_total();
+		foreach($data_uji as $latih){
+			$lantai = $latih->jenis_lantai;
+			$dinding = $latih->jenis_dinding;
+			$penerangan = $latih->penerangan;
+			$pekerjaan = $latih->pekerjaan_kepala_rumah_tangga;
+			$penghasilan = $latih->jumlah_penghasilan;
+			$aset = $latih->kepemilikan_aset;
+			$prob_layak = $data_perhitungan[0]->$lantai->layak * $data_perhitungan[1]->$dinding->layak * $data_perhitungan[2]->$penerangan->layak * $data_perhitungan[3]->$pekerjaan->layak * $data_perhitungan[4]->$penghasilan->layak * $data_perhitungan[5]->$aset->layak * ($data_count_layak[6]->total / $data_count_total[6]->total);
+			$prob_nolayak = $data_perhitungan[0]->$lantai->nolayak * $data_perhitungan[1]->$dinding->nolayak * $data_perhitungan[2]->$penerangan->nolayak * $data_perhitungan[3]->$pekerjaan->nolayak * $data_perhitungan[4]->$penghasilan->nolayak * $data_perhitungan[5]->$aset->nolayak * ($data_count_nolayak[6]->total / $data_count_total[6]->total);
+			// 	$data[] = new stdClass;
+			// 	$i++;
+			// $nama_kelas = $kelas->nama_kelas;
+			// $data_count = (object)['layak' => ((int)$layak[$i]->$nama_kelas + 1)/((int)$layak[6]->total + (new \ArrayIterator($layak[$i]))->count()), 'nolayak' => ((int)$nolayak[$i]->$nama_kelas + 1)/((int)$nolayak[6]->total + (new \ArrayIterator($nolayak[$i]))->count())];
+			// $temp = $kelas->nama_atribut;
+			// $data[$i]->$nama_kelas = $data_count;
+			((((($prob_layak > $prob_nolayak) ? "Layak" : "Tidak Layak") == $latih->kelayakan) ? "Benar" : "Salah") == "Benar") ? $benar++ : $salah++;
+			
+		}
+		$data[] = new stdClass;
+		$data[0]->benar = $benar;
+		$data[0]->salah = $salah;
+		$akurasi = round((($benar/($benar + $salah)) * 100), 2) . '%';
+		$data[0]->akurasi = $akurasi;
+		// echo json_encode($data);
+		return $data;
+	}
 }

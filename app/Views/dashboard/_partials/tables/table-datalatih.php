@@ -2,9 +2,14 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Data Latih</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
     </div>
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="tbl_latih" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -52,9 +57,9 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     $(function () {
-        $("#example1").DataTable({
+        $("#tbl_latih").DataTable({
         "responsive": true, "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#tbl_latih_wrapper .col-md-6:eq(0)');
     });
 </script>

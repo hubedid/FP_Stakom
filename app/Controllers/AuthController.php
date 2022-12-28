@@ -42,6 +42,7 @@ class AuthController extends TamhorAuth
                 'email'    => $this->request->getVar('email'),
                 'username'    => $this->request->getVar('username'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+                'role' => 1,
                 'activate_token'    => $this->key(),
             ];
             $insert_ok = $this->users->save($data);
@@ -152,7 +153,7 @@ class AuthController extends TamhorAuth
                         'logged_in'     => TRUE
                     ];
                     $this->session->set($sess_data);
-                    return redirect()->to('/');
+                    return redirect()->to('/admin');
                 }
             } else {
                 $this->session->setFlashdata(
@@ -269,14 +270,14 @@ class AuthController extends TamhorAuth
         ];
         if ($this->validate($rules)) {
             $update = [
-                'password' => $this->request->getVar('password'),
+                'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), 
                 'updated_at' => Time::now()
             ];
             $this->users->where(['email' => $data['email'], 'reset_token' => $data['reset_token']]);
             $this->users->set($update);
             $update_pass = $this->users->update();
             if ($update_pass == true) {
-                $resetpass->save([
+                $this->resetpass->save([
                     'user_id' => $data['id'],
                     'token' => $data['reset_token'],
                     'created_at' => Time::now()

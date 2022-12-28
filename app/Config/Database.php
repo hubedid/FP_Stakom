@@ -31,10 +31,10 @@ class Database extends \CodeIgniter\Database\Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => '128.199.123.119',
+		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => 'hubed.com1',
-		'database' => 'uas_stakom',
+		'database' => 'tes',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,

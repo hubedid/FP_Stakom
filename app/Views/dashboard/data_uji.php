@@ -6,6 +6,7 @@
 
 <section class="content">
     <div class="container-fluid">
+        <?= $this->include('dashboard/_partials/small-box/small-box-uji') ?>
         <?= $this->include('dashboard/_partials/tables/table-datauji', $data_uji) ?>
     </div>
 </section>

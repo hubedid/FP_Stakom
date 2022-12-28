@@ -10,16 +10,16 @@
         <?= $this->include('dashboard/_partials/small-box/small-box') ?>
         <div class="row">
 
-            <section class="col-lg-7 connectedSortable">
-                <?= $this->include('dashboard/_partials/chart-tabs/chart-tabs') ?>
+            <section class="col-lg-6 connectedSortable">
+            <?= $this->include('dashboard/_partials/tables/table-datalatih', $data_latih) ?>
             </section>
 
-            <section class="col-lg-5 connectedSortable">
-                <?= $this->include('dashboard/_partials/temporal/valo') ?>
+            <section class="col-lg-6 connectedSortable">
+            <?= $this->include('dashboard/_partials/tables/table-datauji', $data_uji) ?>
             </section>
 
         </div>
-        <?= $this->include('dashboard/_partials/temporal/area') ?>
+        <?= $this->include('dashboard/_partials/tables/table-perhitungan-latih', $data_latih) ?>
     </div>
 </section>
 <?= $this->endSection() ?>

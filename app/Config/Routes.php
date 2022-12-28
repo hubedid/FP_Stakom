@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Login');
+$routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -33,11 +33,11 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/activate/(:segment)', 'AuthController::activate/$1');
 $routes->get('/recover-password/(:segment)', 'AuthController::recover_view/$1');
-$routes->get('/', 'Home::index', ['filter' => 'auth']);
-$routes->get('/report', 'Report::index', ['filter' => 'auth']);
-$routes->get('/data-latih', 'DataLatih::index', ['filter' => 'auth']);
-$routes->get('/data-uji', 'DataUji::index', ['filter' => 'auth']);
-$routes->get('/perhitungan-data-latih', 'PerhitunganDL::index', ['filter' => 'auth']);
+$routes->get('/admin', 'Dashboard::index', ['filter' => 'auth']);
+$routes->get('/admin/report', 'Report::index', ['filter' => 'auth']);
+$routes->get('/admin/data-latih', 'DataLatih::index', ['filter' => 'auth']);
+$routes->get('/admin/data-uji', 'DataUji::index', ['filter' => 'auth']);
+$routes->get('/admin/perhitungan-data-latih', 'PerhitunganDL::index', ['filter' => 'auth']);
 // $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->get('/login', 'Login::index');
 // $routes->get('/register', 'Register::index');
@@ -48,7 +48,7 @@ $routes->get('/login', 'Login::index');
 $routes->get('/register', function () {
 	return view('auth/register');
 });
-$routes->get('/logout', function () {
+$routes->get('/admin/logout', function () {
 	return redirect()->to('/authController/logout');
 });
 $routes->get('/forgot-password', function () {
