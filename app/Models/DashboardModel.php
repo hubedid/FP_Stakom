@@ -32,6 +32,44 @@ Class DashboardModel extends Model
         $result   = $builder->get()->getResult();
 		return $result;
 	}
+    public function get_data_latih(){
+        $db      = \Config\Database::connect();
+        $builder = $db->table('data_latih');
+        $builder->select('*');
+        $result   = $builder->get()->getResult();
+		return $result;
+    }
+    public function get_data_uji(){
+        $db      = \Config\Database::connect();
+        $builder = $db->table('data_uji');
+        $builder->select('*');
+        $result   = $builder->get()->getResult();
+		return $result;
+    }
+    public function get_count($atribut, $kelas, $kelayakan){
+        $db      = \Config\Database::connect();
+        $builder = $db->table('data_latih');
+        $builder->select($atribut);
+        $builder->where([$atribut => $kelas]);
+        $builder->where(['kelayakan' => $kelayakan]);
+        $result   = $builder->countAllResults();
+		return $result;
+    }
+    public function get_data_kelas(){
+        $db      = \Config\Database::connect();
+        $builder = $db->table('kelas_atribut');
+        $builder->select('*');
+        $builder->join('atribut', 'atribut.id_atribut = kelas_atribut.id_atribut');
+        $result   = $builder->get()->getResult();
+		return $result;
+    }
+    public function get_data_atribut(){
+        $db      = \Config\Database::connect();
+        $builder = $db->table('atribut');
+        $builder->select('*');
+        $result   = $builder->get()->getResult();
+		return $result;
+    }
 }
 
 ?>

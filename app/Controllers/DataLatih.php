@@ -1,17 +1,13 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\DashboardModel;
-
-class Tracking extends BaseController
+// use App\Models\DashboardModel;
+class DataLatih extends BaseController
 {
 	public function __construct(){
-		$this->DashboardModel = new DashboardModel();
+		// $this->DashboardModel = new DashboardModel();
 		$this->session = \Config\Services::session();
 		$this->request = \Config\Services::request();
-		// Nambah model
-		// $this->load->model('realisasirkapdesainpabrik_model');
-		// Nambah model
 
 
 		// if($this->session->userdata('hak_akses') != '1'){
@@ -31,24 +27,23 @@ class Tracking extends BaseController
 		$id = $this->session->get('id');
 		$data_user = $this->DashboardModel->get_data_user($id);
 		$data['data_user'] = $data_user;
-
-		// $data_income = $this->DashboardModel->get_data_income($id, 2022);
-		// $data['data_income'] = $data_income;
-		// echo json_encode($output);
-        
-
-		return view('dashboard/tracking', $data);
-		// echo "tes";
+		$data_latih = $this->DashboardModel->get_data_latih();
+		$data['data_latih'] = $data_latih;
+		$data_kelas = $this->DashboardModel->get_data_kelas();
+		$data['data_kelas'] = $data_kelas;
+		$data_atribut = $this->DashboardModel->get_data_atribut();
+		$data['data_atribut'] = $data_atribut;
+		$data['data_count_layak'] = $this->get_count_layak();
+		$data['data_count_nolayak'] = $this->get_count_nolayak();
+		$data['data_count_total'] = $this->get_count_total();
+		return view('dashboard/data_latih', $data);
 	}
 
-	// public function get_data_income_daily(){
-	// 	$id = $this->session->get('id');
-	// 	$data_income = $this->DashboardModel->get_data_income_daily($id, $this->request->getVar('bulan'), $this->request->getVar('tahun'), $this->request->getVar('minggu'));
-	// 	$output = $data_income;
-
-	// 	echo json_encode($output);
-	// }
-
+	public function get_data_kelas(){
+		$data_latih = $this->DashboardModel->get_data_kelas();
+		$output = $data_latih;
+		echo json_encode($output);
+	}
 	//--------------------------------------------------------------------
 
 }

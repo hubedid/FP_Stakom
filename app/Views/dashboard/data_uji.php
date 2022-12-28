@@ -6,7 +6,7 @@
 
 <section class="content">
     <div class="container-fluid">
-        <?= $this->include('dashboard/_partials/temporal/tracking') ?>
+        <?= $this->include('dashboard/_partials/tables/table-datauji', $data_uji) ?>
     </div>
 </section>
 <?= $this->endSection() ?>

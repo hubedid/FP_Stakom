@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\DashboardModel;
+// use App\Models\DashboardModel;
 
 class Report extends BaseController
 {
 	public function __construct(){
-		$this->DashboardModel = new DashboardModel();
+		// $this->DashboardModel = new DashboardModel();
 		$this->session = \Config\Services::session();
 		$this->request = \Config\Services::request();
 		// Nambah model

@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="adminLTE/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="#" class="brand-link">
+        <img src="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">UAS STAKOM</span>
     </a>
 
     <!-- Sidebar -->
@@ -12,7 +12,7 @@
             <div class="image">
                 <img src="<?php echo $data_user[0]->img ?>" class="img-circle elevation-2" alt="User Image">
             </div>
-            <div class="info">
+            <div class="info" text-align="center">
                 <a href="#" class="d-block"><?php echo $data_user[0]->fullname ?></a>
             </div>
         </div>
@@ -39,7 +39,6 @@
                     <a href="/report" <?php 
                     if(base_url().'/report' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
-                    <!-- <a href="/report" class="nav-link active"> -->
                         <i class="nav-icon fas fa-chart-bar"></i>
                         
                         <p>
@@ -48,14 +47,35 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/tracking" <?php 
-                    if(base_url().'/tracking' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    <a href="/data-latih" <?php 
+                    if(base_url().'/data-latih' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
-                    <!-- <a href="/report" class="nav-link active"> -->
                         <i class="nav-icon fas fa-map"></i>
                         
                         <p>
-                            Tracking
+                            Data Latih
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/data-uji" <?php 
+                    if(base_url().'/data-uji' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    ?>>
+                        <i class="nav-icon fas fa-map"></i>
+                        
+                        <p>
+                            Data Uji
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/perhitungan-data-latih" <?php 
+                    if(base_url().'/perhitungan-data-latih' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
+                    ?>>
+                        <i class="nav-icon fas fa-map"></i>
+                        
+                        <p>
+                            Perhitungan Data Latih
                         </p>
                     </a>
                 </li>
@@ -63,7 +83,6 @@
                     <a href="/logout" <?php 
                     if(base_url().'/logout' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?> onclick="return confirm('Are you sure?')">
-                    <!-- <a href="/report" class="nav-link active"> -->
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         
                         <p>
