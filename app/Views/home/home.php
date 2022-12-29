@@ -13,6 +13,12 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+        <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+        <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+        <!-- <link rel="stylesheet" href="/adminLTE/css/adminlte.min.css"> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/home/css/styles.css" rel="stylesheet" />
     </head>
@@ -165,18 +171,18 @@ tujuan untuk membantu dalam penyaluran bantuan penerimaan beras miskin</p></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <form>
+                                    <form action="<?= base_url('Home/get_hasil') ?>" method="post">
                                         <div class="form-group row">
-                                            <label for="exampleInputEmail1" class="col-lg-5 col-form-label col-form-label-lg" >Nama</label>
+                                            <label for="nama" class="col-lg-5 col-form-label col-form-label-lg" >Nama</label>
                                             <div class="col-lg-7">
-                                                <input type="name" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nama">
+                                                <input class="form-control form-control-lg" name="nama" aria-describedby="emailHelp" placeholder="Masukkan Nama">
                                             </div>   
                                         </div>
                                         <?php foreach($data_atribut as $atribut){ ?>
                                             <div class="py-2 form-group row">
-                                                <label for="exampleInputEmail1" class="col-lg-5 col-form-label col-form-label-lg"><?= $atribut->nama_atribut ?></label>
+                                                <label for="<?= $atribut->atribut_sql ?>" class="col-lg-5 col-form-label col-form-label-lg"><?= $atribut->nama_atribut ?></label>
                                                 <div class="col-lg-7">
-                                                    <select id="<?= $atribut->atribut_sql ?>" class="form-control form-control-lg">
+                                                    <select name="<?= $atribut->atribut_sql ?>" class="form-control form-control-lg">
                                                         <?php foreach($data_kelas as $kelas){ 
                                                             if($atribut->nama_atribut == $kelas->nama_atribut){ ?>
                                                                 <option value="<?= $kelas->nama_kelas ?>"><?= $kelas->nama_kelas ?></option>
@@ -187,7 +193,9 @@ tujuan untuk membantu dalam penyaluran bantuan penerimaan beras miskin</p></div>
                                             </div>
                                         <?php } ?>
                                         <br />
-                                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg ">Cek Kelayakan</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -197,6 +205,9 @@ tujuan untuk membantu dalam penyaluran bantuan penerimaan beras miskin</p></div>
             </div>
         </div>
         </div>
+        <?php if (session()->getFlashdata('msg')) : ?>
+            <?= session()->getFlashdata('msg') ?>
+        <?php endif; ?>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -206,5 +217,31 @@ tujuan untuk membantu dalam penyaluran bantuan penerimaan beras miskin</p></div>
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="/plugins/jquery/jquery.min.js"></script>
+        <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
+        <script src="/plugins/toastr/toastr.min.js"></script>
+        <script src="/adminLTE/js/adminlte.min.js"></script>
+        <script>
+            $(function() {
+                var error = $('.errors').html();
+                if (error) {
+                    $('#cekKelayakanModal').modal('show');
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Nama Tidak Boleh Kosong!'
+                })
+                }
+                var modalHasil = $('#modalHasil').html();
+                if (modalHasil) {
+                    $("#modalHasil").modal('show');
+                }
+                var modalAnalisis = $('#modalAnalisis').html();
+                if (modalAnalisis) {
+                    $("#modalAnalisis").modal('show');
+                }
+            });
+        </script>
     </body>
 </html>

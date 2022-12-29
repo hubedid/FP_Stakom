@@ -40,7 +40,7 @@
                     <a href="/admin/data-latih" <?php 
                     if(base_url().'/admin/data-latih' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
-                        <i class="nav-icon fas fa-chart-line"></i>
+                        <i class="nav-icon fas fa-map"></i>
                         
                         <p>
                             Data Latih
@@ -51,7 +51,7 @@
                     <a href="/admin/data-uji" <?php 
                     if(base_url().'/admin/data-uji' == $CurPageURL){echo 'class="nav-link active"';}else{echo 'class="nav-link"';}
                     ?>>
-                        <i class="nav-icon fas fa-map"></i>
+                        <i class="nav-icon fas fa-chart-line"></i>
                         
                         <p>
                             Data Uji
